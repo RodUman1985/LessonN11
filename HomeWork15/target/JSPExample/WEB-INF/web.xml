@@ -1,0 +1,34 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+    <welcome-file-list>
+        <welcome-file>shop.jsp </welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+
+   <error-code>404</error-code>
+   <location>/404.jsp</location>
+
+    </error-page>
+
+    <filter>
+
+        <filter-name>FiltrClass</filter-name>
+        <filter-class>come.step.dubinin.FiltrClass</filter-class>
+
+
+
+    </filter>
+
+    <filter-mapping>
+
+        <filter-name>FiltrClass</filter-name>
+        <url-pattern>shopPageTwo.jsp</url-pattern>
+
+    </filter-mapping>
+
+</web-app>

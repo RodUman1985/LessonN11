@@ -1,0 +1,38 @@
+package come.step.dubinin.confige;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+
+import static java.lang.System.getProperties;
+
+public class PropertiesLoader {
+    private  static  final Logger LOGGER = LogManager.getLogger(PropertiesLoader.class);
+    private static final  String DB_PROPS_PATH="/dataBase/dataBase.properties";
+    private static final Properties PROPERTIES= getProperties();
+
+    private PropertiesLoader(){
+
+    }
+
+    public static String loadProperties (String property){
+        return  PROPERTIES.getProperty(property);
+    }
+
+    private static Properties getProperties(){
+      Properties temp= new Properties();
+      try  (InputStream  inp =PropertiesLoader.class.getResourceAsStream(DB_PROPS_PATH)){
+          if(inp !=null){
+              temp.load(inp);
+          }
+      } catch (IOException e) { LOGGER.error( "IOException at PropertiesLoader at getProperties()" + e);}
+
+
+      return  temp;
+
+    };
+}
